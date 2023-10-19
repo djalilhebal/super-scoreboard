@@ -1,0 +1,358 @@
+{
+	"gameClient" : 
+	{
+		"observerServerIp" : "spectator-consumer.euw1.lol.pvp.net",
+		"observerServerPort" : 80,
+		"running" : true,
+		"serverIp" : "162.249.77.156",
+		"serverPort" : 5157,
+		"visible" : true
+	},
+	"gameData" : 
+	{
+		"gameId" : 6611407126,
+		"gameName" : "",
+		"isCustomGame" : false,
+		"password" : "",
+		"playerChampionSelections" : 
+		[
+			{
+				"championId" : 115,
+				"selectedSkinIndex" : 6,
+				"spell1Id" : 4,
+				"spell2Id" : 12,
+				"summonerInternalName" : "Light0003"
+			},
+			{
+				"championId" : 133,
+				"selectedSkinIndex" : 4,
+				"spell1Id" : 4,
+				"spell2Id" : 6,
+				"summonerInternalName" : "ExactlyOnce"
+			},
+			{
+				"championId" : 432,
+				"selectedSkinIndex" : 0,
+				"spell1Id" : 4,
+				"spell2Id" : 14,
+				"summonerInternalName" : "Josephuu"
+			},
+			{
+				"championId" : 233,
+				"selectedSkinIndex" : 0,
+				"spell1Id" : 11,
+				"spell2Id" : 4,
+				"summonerInternalName" : "dolocatilr"
+			},
+			{
+				"championId" : 517,
+				"selectedSkinIndex" : 1,
+				"spell1Id" : 14,
+				"spell2Id" : 4,
+				"summonerInternalName" : "ZFroste"
+			},
+			{
+				"championId" : 147,
+				"selectedSkinIndex" : 0,
+				"spell1Id" : 4,
+				"spell2Id" : 7,
+				"summonerInternalName" : "Babyskell"
+			},
+			{
+				"championId" : 526,
+				"selectedSkinIndex" : 0,
+				"spell1Id" : 4,
+				"spell2Id" : 14,
+				"summonerInternalName" : "NastyBill"
+			},
+			{
+				"championId" : 421,
+				"selectedSkinIndex" : 0,
+				"spell1Id" : 11,
+				"spell2Id" : 14,
+				"summonerInternalName" : "Ewiix"
+			},
+			{
+				"championId" : 157,
+				"selectedSkinIndex" : 9,
+				"spell1Id" : 4,
+				"spell2Id" : 14,
+				"summonerInternalName" : "LyLotz"
+			},
+			{
+				"championId" : 33,
+				"selectedSkinIndex" : 0,
+				"spell1Id" : 4,
+				"spell2Id" : 12,
+				"summonerInternalName" : "The John Cena PT"
+			}
+		],
+		"queue" : 
+		{
+			"allowablePremadeSizes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"areFreeChampionsAllowed" : true,
+			"assetMutator" : "",
+			"category" : "PvP",
+			"championsRequiredToPlay" : 20,
+			"description" : "Draft Pick",
+			"detailedDescription" : "Normal (Draft Pick)",
+			"gameMode" : "CLASSIC",
+			"gameTypeConfig" : 
+			{
+				"advancedLearningQuests" : false,
+				"allowTrades" : true,
+				"banMode" : "StandardBanStrategy",
+				"banTimerDuration" : 38,
+				"battleBoost" : false,
+				"crossTeamChampionPool" : false,
+				"deathMatch" : false,
+				"doNotRemove" : false,
+				"duplicatePick" : false,
+				"exclusivePick" : true,
+				"id" : 18,
+				"learningQuests" : false,
+				"mainPickTimerDuration" : 0,
+				"maxAllowableBans" : 6,
+				"name" : "GAME_CFG_TEAM_BUILDER_DRAFT",
+				"onboardCoopBeginner" : false,
+				"pickMode" : "TeamBuilderDraftPickStrategy",
+				"postPickTimerDuration" : 33,
+				"reroll" : false,
+				"teamChampionPool" : false
+			},
+			"id" : 400,
+			"isRanked" : false,
+			"isTeamBuilderManaged" : true,
+			"lastToggledOffTime" : 1677650821844,
+			"lastToggledOnTime" : 1677653073598,
+			"mapId" : 11,
+			"maximumParticipantListSize" : 5,
+			"minLevel" : 10,
+			"minimumParticipantListSize" : 1,
+			"name" : "Normal",
+			"numPlayersPerTeam" : 5,
+			"queueAvailability" : "Available",
+			"queueRewards" : 
+			{
+				"isChampionPointsEnabled" : true,
+				"isIpEnabled" : true,
+				"isXpEnabled" : true,
+				"partySizeIpRewards" : []
+			},
+			"removalFromGameAllowed" : false,
+			"removalFromGameDelayMinutes" : 0,
+			"shortName" : "Normal",
+			"showPositionSelector" : true,
+			"spectatorEnabled" : true,
+			"type" : "NORMAL"
+		},
+		"spectatorsAllowed" : false,
+		"teamOne" : 
+		[
+			{
+				"championId" : 133,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 5896,
+				"puuid" : "487389ff-e68d-5e90-b186-b576b3c2c3a4",
+				"selectedPosition" : "TOP",
+				"selectedRole" : "TOP.PRIMARY.TOP.JUNGLE",
+				"summonerId" : 3256964612269952,
+				"summonerInternalName" : "ExactlyOnce",
+				"summonerName" : "ExactlyOnce",
+				"teamOwner" : false,
+				"teamParticipantId" : 1
+			},
+			{
+				"championId" : 517,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 5814,
+				"puuid" : "c7eeb8e9-5d13-54e2-bc58-3d421aad8ec6",
+				"selectedPosition" : "MIDDLE",
+				"selectedRole" : "MIDDLE.PRIMARY.MIDDLE.TOP",
+				"summonerId" : 106588280,
+				"summonerInternalName" : "ZFroste",
+				"summonerName" : "ZFroste",
+				"teamOwner" : false,
+				"teamParticipantId" : 2
+			},
+			{
+				"championId" : 233,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 6203,
+				"puuid" : "230d3cd1-d52e-546f-979f-2cb3f2612e95",
+				"selectedPosition" : "JUNGLE",
+				"selectedRole" : "JUNGLE.PRIMARY.JUNGLE.MIDDLE",
+				"summonerId" : 136279477,
+				"summonerInternalName" : "dolocatilr",
+				"summonerName" : "dolocatilr",
+				"teamOwner" : false,
+				"teamParticipantId" : 2
+			},
+			{
+				"championId" : 115,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 4801,
+				"puuid" : "1b5c1275-85b2-5116-b3eb-29e6ab580337",
+				"selectedPosition" : "BOTTOM",
+				"selectedRole" : "BOTTOM.PRIMARY.BOTTOM.MIDDLE",
+				"summonerId" : 146761334,
+				"summonerInternalName" : "Light0003",
+				"summonerName" : "Light0003",
+				"teamOwner" : false,
+				"teamParticipantId" : 1
+			},
+			{
+				"championId" : 432,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 5457,
+				"puuid" : "b4d4e5c0-79a4-5cd4-be7e-e3bc1f3015dd",
+				"selectedPosition" : "UTILITY",
+				"selectedRole" : "UTILITY.PRIMARY.UTILITY.TOP",
+				"summonerId" : 145691524,
+				"summonerInternalName" : "Josephuu",
+				"summonerName" : "Josephuu",
+				"teamOwner" : false,
+				"teamParticipantId" : 1
+			}
+		],
+		"teamTwo" : 
+		[
+			{
+				"championId" : 33,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 3592,
+				"puuid" : "d026e74d-8ce3-5828-9ed8-867749d5342d",
+				"selectedPosition" : "TOP",
+				"selectedRole" : "TOP.PRIMARY.TOP.MIDDLE",
+				"summonerId" : 81126895,
+				"summonerInternalName" : "The John Cena PT",
+				"summonerName" : "The John Cena PT",
+				"teamOwner" : false,
+				"teamParticipantId" : 4
+			},
+			{
+				"championId" : 147,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 3381,
+				"puuid" : "2c74cef9-7ae2-52ff-883a-7aee78d0f3b6",
+				"selectedPosition" : "BOTTOM",
+				"selectedRole" : "BOTTOM.PRIMARY.BOTTOM.MIDDLE",
+				"summonerId" : 2728286583817536,
+				"summonerInternalName" : "Babyskell",
+				"summonerName" : "Babyskell",
+				"teamOwner" : false,
+				"teamParticipantId" : 3
+			},
+			{
+				"championId" : 526,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 5764,
+				"puuid" : "858f299f-d3d9-50ef-b656-72be59d1b87e",
+				"selectedPosition" : "UTILITY",
+				"selectedRole" : "UTILITY.PRIMARY.UTILITY.TOP",
+				"summonerId" : 138858516,
+				"summonerInternalName" : "NastyBill",
+				"summonerName" : "NastyBill",
+				"teamOwner" : false,
+				"teamParticipantId" : 3
+			},
+			{
+				"championId" : 157,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 5528,
+				"puuid" : "ea7b668f-9808-5c6a-ab71-822300f02f9f",
+				"selectedPosition" : "MIDDLE",
+				"selectedRole" : "MIDDLE.PRIMARY.MIDDLE.JUNGLE",
+				"summonerId" : 138848519,
+				"summonerInternalName" : "LyLotz",
+				"summonerName" : "LyLotz",
+				"teamOwner" : false,
+				"teamParticipantId" : 3
+			},
+			{
+				"championId" : 421,
+				"lastSelectedSkinIndex" : 0,
+				"profileIconId" : 3546,
+				"puuid" : "c296fef5-141d-5e71-a795-a706c6fb0689",
+				"selectedPosition" : "JUNGLE",
+				"selectedRole" : "JUNGLE.PRIMARY.JUNGLE.UTILITY",
+				"summonerId" : 2775450843530528,
+				"summonerInternalName" : "Ewiix",
+				"summonerName" : "Ewiix",
+				"teamOwner" : false,
+				"teamParticipantId" : 3
+			}
+		]
+	},
+	"gameDodge" : 
+	{
+		"dodgeIds" : [],
+		"phase" : "None",
+		"state" : "Invalid"
+	},
+	"map" : 
+	{
+		"assets" : 
+		{
+			"champ-select-background-sound" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+			"champ-select-flyout-background" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+			"champ-select-planning-intro" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+			"game-select-icon-active" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+			"game-select-icon-active-video" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+			"game-select-icon-default" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+			"game-select-icon-disabled" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+			"game-select-icon-hover" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+			"game-select-icon-intro-video" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+			"gameflow-background" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+			"gameflow-background-dark" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background-dark.jpg",
+			"gameselect-button-hover-sound" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+			"icon-defeat" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+			"icon-defeat-v2" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat-v2.png",
+			"icon-defeat-video" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+			"icon-empty" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+			"icon-hover" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+			"icon-leaver" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+			"icon-leaver-v2" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver-v2.png",
+			"icon-loss-forgiven-v2" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-loss-forgiven-v2.png",
+			"icon-v2" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-v2.png",
+			"icon-victory" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+			"icon-victory-video" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm",
+			"map-north" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+			"map-south" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+			"music-inqueue-loop-sound" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+			"parties-background" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+			"postgame-ambience-loop-sound" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+			"ready-check-background" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+			"ready-check-background-sound" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+			"sfx-ambience-pregame-loop-sound" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+			"social-icon-leaver" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+			"social-icon-victory" : "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png"
+		},
+		"categorizedContentBundles" : {},
+		"description" : "The newest and most venerated battleground is known as Summoner's Rift. Traverse down one of three different paths in order to attack your enemy at their weakest point. Work with your allies to siege the enemy base and destroy their Nexus!",
+		"gameMode" : "CLASSIC",
+		"gameModeName" : "Summoner's Rift",
+		"gameModeShortName" : "Summoner's Rift",
+		"gameMutator" : "",
+		"id" : 11,
+		"isRGM" : false,
+		"mapStringId" : "SR",
+		"name" : "Summoner's Rift",
+		"perPositionDisallowedSummonerSpells" : {},
+		"perPositionRequiredSummonerSpells" : {},
+		"platformId" : "",
+		"platformName" : "",
+		"properties" : 
+		{
+			"suppressRunesMasteriesPerks" : false
+		}
+	},
+	"phase" : "InProgress"
+}

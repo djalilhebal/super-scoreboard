@@ -1,0 +1,55 @@
+@startuml
+
+title Omnistone Services - Class Diagram
+
+skin rose
+
+package Services {
+
+    class LightGameUtils() {
+        +{static} merge(target, source);
+    }
+    
+    '---
+
+    class StaticDataService {
+        +void init();
+        +List<LightSpell> getSpells();
+    }
+
+    '---
+
+    interface IGameProvider {
+        +getLiveGame();
+        +getLiveGame(region, summonerName);
+    }
+
+    class RiotService implements IGameProvider {
+        +getLiveGame(region, summonerName)
+    }
+    note top of RiotService: contains **gameId**, **minor runes**
+
+    class OpggService implements IGameProvider {
+        +getLiveGame(region, summonerName)
+    }
+    note top of OpggService: contains **minor runes**
+
+    class LcuService implements IGameProvider {
+        +getLiveGame()
+        +onNewGame(Consumer listener)
+        
+        init()
+        isConnected()
+    }
+    note top of LcuService: contains **gameId**, **spells**
+
+    class LiveGameClientService implements IGameProvider {
+        +getLiveGame()
+
+        isPortOpen()
+    }
+    note top of LiveGameClientService: contains **spells**, **items**, **major runes**
+
+}
+
+@enduml

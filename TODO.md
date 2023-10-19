@@ -48,4 +48,4 @@ Although, we can still use it to make the app more push-y instead of pull-y.
 - [ ] Make it work on diff screen resolutions.
 
 - [ ] Make it work in fullscreen mode.
-See [JOverlay.md](./docs/JOverlay.md)
+See [joverlay.md](./docs/joverlay.md)

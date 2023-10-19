@@ -6,7 +6,7 @@
 - **Why no Electron?** \
     * Electron or CEF (Chromium Embedded Framework) are too heavy, at least for my poor machine.
     * Also, Electron forwards only `mousemove` events ("mouseenter" and "mouseleave").
-    We are interested in other input events (mouse and key presses).
+    We are interested in other input events (e.g. mouse and key presses). \
     If we need to create the behavior we want, we need to use native system calls and hooks.
     So, why not use a more native-y language/framework like Java/Swing/JNA or C#/WPF or even C/ImGui?
 
@@ -49,16 +49,23 @@ For example, sending flash timers to the team chat.
 
 This won't work:
 - [ANSWER: Type a String using java.awt.Robot - Stack Overflow](https://stackoverflow.com/a/29665705)
-    * KAITO: `getSystemClipboard()` then put your content. The user can either Control-V or we can simulate it using `Robot`'s key press and key release methods.
+    * KAITO: `getSystemClipboard()` then put your content. The user can either `Control + V`, or we can simulate it using `Robot`'s key press and key release methods.
 
 Apparently, the Game Client uses its own clipboard system,
-so we can't simply write to the system clipboard and let the user `Control + V`.
+so we can't simply write to the system clipboard and let the user <kbd>Control</kbd>+<kbd>V</kbd>.
 ```java
 // SEE https://gist.github.com/felipegodoyf/d6ba01a8452d2b88d4fe5344eeb50101
-// App or Utils
+// KAITO: Add to App or Utils
 public void typeToLeagueChat(String str) {
     // Hit {ENTER}
     // Type str
     // Hit {ENTER}
 }
 ```
+
+
+## Questions / Problems
+
+- [ ] Do all League Game Clients have the same aspect ratio?
+    * KAITO: Probably not.
+    We should support the (automatic) resizing and (manual) repositioning of the Super Scoreboard.

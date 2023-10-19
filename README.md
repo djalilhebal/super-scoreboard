@@ -10,6 +10,7 @@ Also, it uses familiar UI patterns, like holding a button to reset or toggle its
 
 ![App screenshot](./docs/app-screenshot--2023-10-09.jpeg)
 
+
 ## Design
 
 **How it should work**:
@@ -31,6 +32,10 @@ Also, it uses familiar UI patterns, like holding a button to reset or toggle its
 - ~~Double clicking the app's icon~~
     * It should copy Flash timers to the clipboard or type it in team chat.
 
+**Timer formats**:
+- "`~SSS`" or "`~MM:SS`" When the summ will be up (in-game time).
+- "`=SSS`" The summ's calculated cooldown at the moment of recording.
+- "`<SSS`" How many seconds are left.
 
 **Goals**:
 
@@ -53,7 +58,7 @@ I just needed something that works on my hunk of metal :/)
 
 **Non-goals**:
 
-- Automatically tracking summs (e.g. if we "see" them being used, using some AI/CV/sound recognition bullshit or even memory mapping... Too complex. Too hacky/scripty.).
+- Automatically tracking summs (e.g. if we "see" them being used, using some AI/CV/sound recognition bullshit or even process memory reading... Too complex. Too hacky/scripty.).
 
 - Reading "Team Chat" and trusting teammates' pings. \
 (AFAIK, you can't access in-game chat using client APIs (LCU or LiveClientData), but you can still use AI/OCR. Again, fuck AI bullshit.) \
@@ -71,6 +76,22 @@ Just download the portable binary from **Releases** and run it.
 Run the overlay and League (in either order) and it should work.
 
 The game must run in Borderless mode.
+
+
+## Uses
+
+External dependencies:
+
+- [Google's gson](https://github.com/google/gson)
+    * "A Java serialization/deserialization library to convert Java Objects into JSON and back"
+
+- [R4J](https://github.com/stelar7/R4J)
+    * "A Java library containing the API for every Riot game"
+    * It has support for LCU and contains POJOs for LiveGame Data.
+    * We use it mostly to get authorization headers and make raw ("custom") requests that we later parse using gson.
+
+- [ ] https://github.com/stirante/lol-client-java-api
+    * It seems better than R4J.
 
 
 ## Expected Questions
@@ -186,8 +207,7 @@ This is a free fan project.
 It has not been verified/approved by Riot, and it may violate the game's  terms of service. **Use at your own risk.** \
 (Maybe checK [Riot Games's Legal page](https://www.riotgames.com/en/legal))
 
-**_SuperScoreboard_ is in no way affiliated with Riot Games, nor should it be considered a project endorsed by Riot Game.**
-
+**_SuperScoreboard_ is not endorsed, certified or otherwise approved in any way by Riot Games, Inc. or any of its affiliates.**
 
 
 ## License

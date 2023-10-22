@@ -8,11 +8,11 @@ What's "super" about it is how easy and intuitive it is to use: \
 It codifies(?) common practices, like double clicking an enemy summ to signal that it was used. \
 Also, it uses familiar UI patterns, like holding a button to reset or toggle its state (e.g. holding the Mute Player button to mute/unmute someone).
 
-> ![In-game screenshot](./docs/screenshot-ingame--2023-10-22.jpeg)
-> Notice Warwick's Ghost. It reads "-157", meaning there are 157 seconds left until it is up.
+![In-game screenshot](./docs/screenshot-ingame--2023-10-22.jpeg)
+Notice Warwick's Ghost. It reads "-157", meaning there are 157 seconds left until it is up.
 
-> ![Tray icon](./docs/screenshot-tray--2023-10-22.jpeg)
-> Tray icon.
+![Tray icon](./docs/screenshot-tray--2023-10-22.jpeg)
+Tray icon.
 
 
 ## Design
@@ -51,7 +51,7 @@ Also, it uses familiar UI patterns, like holding a button to reset or toggle its
     + Preferably, it automatically reflects the ingame scoreboard order.
     + ~~Otherwise, we can always let the user manually reorder SuperScoreboard's participants using a context menu (e.g. "Move to TOP").~~
 
-- Should be lighter than existing solutions.
+- Should be lighter than existing solutions. \
 (Use something like C#/WPF or Java/Swing, no Chromium bullshit.
 I just needed something that works on my hunk of metal :/)
 
@@ -67,15 +67,16 @@ I just needed something that works on my hunk of metal :/)
 
 ## Getting Started
 
-**Prerequisites**:
+**Tested with**:
 - Windows 10. \
-(Anything newer than Windows XP should work)
+(Anything newer than Windows XP should work.)
+- OpenJDK 15 x64 and OpenJDK 17 x64.
 
-Just download the portable binary from **Releases** and run it.
+Just download the ~~portable binary~~ runnable jar from **Releases**.
 
-Run the overlay and League (in either order) and it should work.
+Run the overlay and League (in whatever order) and it should just work.
 
-The game must run in Borderless mode.
+Also, the game must run in Borderless mode.
 
 
 ## Uses
@@ -148,7 +149,7 @@ Our project does not. It just works.
         + :purple_square: The summoner spell buttons will assume that the spell has been used 7 seconds ago.
         + :green_square: Only uses Client features (no dependency on external Riot APIs).
         + :green_square: Tracks ult CD based on its initial cooldown + AH from dragons (Cloud) + AH from items.
-        + :red_square: "The overlay is not visible if you play in fullscreen mode."
+        + :yellow_square: "The overlay is not visible if you play in fullscreen mode."
         + :purple_square: "reload" will update the positions of the Champions in the Setter Window according to the in game scoreboard.
     * It assumes that Insp = Cosmic Insight.
 

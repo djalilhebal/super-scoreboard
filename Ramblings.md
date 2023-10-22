@@ -1,6 +1,17 @@
 # Ramblings
 
 
+**Timer formats**:
+- "`~SSS`" or "`~MM:SS`" When the summ will be up (in-game time).
+- "`=SSS`" The summ's calculated cooldown at the moment of recording.
+- "`<SSS`" How many seconds are left.
+
+**Features**:
+- [x] Able to change the recording delay.
+- [ ] (WIP) Able to change the timer format.
+- [ ] (WIP) Able to change whether we can assume Insp = Cosmic.
+
+
 ## Choices
 
 - **Why no Electron?** \

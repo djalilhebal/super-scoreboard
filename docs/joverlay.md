@@ -57,7 +57,7 @@ We can do it.
         - **Communication** as in IPC
     * **Cross**:
         - It works across different processes (IPC).
-        - Also, Chrono Cross, parallel dimensions
+        - Also, Chrono Cross, parallel dimensions.
 
 
 ## How it should work
@@ -146,6 +146,7 @@ Options:
 - **PPM** seems cool
     * :red_square: Does not support transparency.
     * :green_square: Uncompressed.
+    * :yellow_square: Supported by DirectX 9, but not Java. Easy to implement though.
 
 ### See
 

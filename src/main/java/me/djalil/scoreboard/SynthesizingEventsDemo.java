@@ -142,13 +142,13 @@ class KSpellTimer extends JPanel {
 
 }
 
-public class ReDispatchingEventsDemo extends JFrame
+public class SynthesizingEventsDemo extends JFrame
 		implements NativeKeyListener, NativeMouseInputListener, WindowListener {
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new ReDispatchingEventsDemo();
+				new SynthesizingEventsDemo();
 			}
 		});
 	}
@@ -156,7 +156,7 @@ public class ReDispatchingEventsDemo extends JFrame
 	private Component hoveredEl = null;
 	private NativeMouseEvent latestMouseEvent = null;
 
-	public ReDispatchingEventsDemo() {
+	public SynthesizingEventsDemo() {
 		// Set the event dispatcher to a swing safe executor service.
 		GlobalScreen.setEventDispatcher(new SwingDispatchService());
 

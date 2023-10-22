@@ -12,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import me.djalil.scoreboard.App;
 import me.djalil.scoreboard.AppController;
 import me.djalil.scoreboard.model.LightGame;
 import me.djalil.scoreboard.model.LightGame.Participant;
@@ -23,7 +24,7 @@ public class KParticipantList extends JPanel {
 	private List<Participant> participants;
 	
 	public KParticipantList(List<Participant> participants) {
-		game = AppController.getAppModel().getGame();
+		game = App.getAppModel().getGame();
 		map = new HashMap<>();
 		this.participants = participants;
 		

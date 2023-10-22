@@ -10,6 +10,23 @@ The only info we are extracting from LCU Gameflow Session is `gameId`, which we 
 We can get the rest from **LiveClientData** (mainly spell codenames and champion codenames). \
 Although, we can still use it to make the app more push-y instead of pull-y.
 
+- [ ] Stats (namely `COSMIC_HASTE` and `LUCIDS_HASTE`) should be not be hard-coded
+    even if they hardly ever change.
+    * Like, check [Patch History section of Lucids](https://leagueoflegends.fandom.com/wiki/Ionian_Boots_of_Lucidity).
+    The last time its stats were changed was over 2 years ago (v11.1, January 6th, 2021).
+    * Item (and rune) stats are not easy to access. We need to parse the template text of their descriptions, which might change.
+    If we can't make it future-proof, why bother?
+
+- [ ] Are participants getting automatically reordered?
+    * Fixable.
+    * IIRC, we only refresh participants when recording a new summ usage.
+
+- [ ] We need to retry getting minor runes (e.g. from `OpggService`).
+If we try to get them as soon as the game starts, we won't get a response.
+
+- [ ] SmartClientChecker: Just use Semaphores.
+Fuck locks and conditions. There is only one thread anyways... or two: looper and the WS thread itself.
+
 
 ## Perf
 

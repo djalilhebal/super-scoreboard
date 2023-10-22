@@ -30,7 +30,7 @@ public class AppModel extends Thing implements IAppModel {
     	
     	clientChecker = new DumbClientChecker();
     	clientChecker.onNewGame = (g) -> {
-    		System.out.println("[AppModel][DumbClientChecker] NewGame: " + g);
+    		LOG.info("NewGame from DumbClientChecker: " + g);
     		this.setGame(g);
     	};
     	clientChecker.start();
@@ -87,7 +87,7 @@ public class AppModel extends Thing implements IAppModel {
 	/**
 	 * Is TAB being pressed?
 	 */
-	private boolean isTabbing;
+	private boolean isTabbing = false;
 		
 	public boolean getIsTabbing() {
 		return isTabbing;
@@ -128,10 +128,10 @@ public class AppModel extends Thing implements IAppModel {
 		opggService = new OpggService();
 
 		// Static data
-    	var spellsFile = "ddragon-summoner.json";
-    	var spellsBody = Utils.readText(spellsFile);
-    	DdragonService.loadSpells(spellsBody);
-    	//DdragonService.init();
+    	//var spellsFile = "ddragon-summoner.json";
+    	//var spellsBody = Utils.readText(spellsFile);
+    	//DdragonService.loadSpells(spellsBody);
+    	DdragonService.init();
     	spells = DdragonService.getSpells();
 
     	// Live data

@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 
 import me.djalil.scoreboard.components.KColor;
 import me.djalil.scoreboard.components.KScoreboard;
+import me.djalil.scoreboard.components.KTray;
 import me.djalil.scoreboard.model.AppModel;
 import me.djalil.scoreboard.services.LcuService;
 import me.djalil.scoreboard.services.LiveClientDataService;
@@ -30,18 +31,23 @@ public class AppController {
 
 	private static final Logger LOG = Logger.getLogger(AppController.class.getName());
 
+	// ---
+	
 	private static AppModel appModel;
 
-	public static AppModel getAppModel() {
+	public AppModel getAppModel() {
 		return appModel;
 	}
+	
+	public void setAppModel(AppModel appModel) {
+		AppController.appModel = appModel;
+	}
+	
+	// ---
 
-	public static void main(String[] args) {
-		appModel = new AppModel();
-
+	public void createAndShowUI() {
 		var screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		// var win = new JWindow();
 		var win = new JFrame();
 		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		win.setUndecorated(true);
@@ -50,23 +56,14 @@ public class AppController {
 		win.setLocation(0, 0);
 		win.setSize(screenSize);
 		win.setAlwaysOnTop(true);
-		win.setOpacity(0.5f);
+		win.setOpacity(0.8f);
 		win.setFocusable(false);
 		win.setFocusableWindowState(false);
 		win.setFocusTraversalKeysEnabled(false);
+		win.setAutoRequestFocus(false);
 		win.setBackground(KColor.AIR);
 
-		win.addWindowListener(new WindowAdapter() {
-			public void windowDeactivated(WindowEvent e) {
-				LOG.info("windowDeactivated");
-				/*
-				win.setAlwaysOnTop(true);
-				win.toFront();
-				*/
-			}
-		});
-		
-		var keyHandler = new KeyAdapter() {
+		win.addKeyListener(new KeyAdapter() {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -82,8 +79,7 @@ public class AppController {
 				}
 			}
 
-		};
-		win.addKeyListener(keyHandler);
+		});
 
 		var container = new JPanel();
 		container.setOpaque(false);
@@ -125,6 +121,7 @@ public class AppController {
 			});
 		});
 
+		// For manual testing
 		var menu = new JPopupMenu();
 		menu.add(new AbstractAction("Refresh principal") {
 			@Override
@@ -166,20 +163,23 @@ public class AppController {
 		//container.setComponentPopupMenu(menu);
 		//loadInitialGame();
 
-		win.setVisible(true);
 
+		win.setVisible(true);
+		
 		LOG.info("Making the window transparent...");
 		OverlayUtils.setWindowTransparent(win);
 
+		LOG.info("Forwarding key events...");
 		EventSynthesizer.forwardKeyboardEvents(win);
+		
 		LOG.info("Forwarding mouse events...");
 		OverlayUtils.setForwardMouseEvents(win);
-		LOG.info("Forwarding mouse events: DONE.");
+		LOG.info("Forwarding mouse events done.");
 	}
 
 	// --- TEST DATA ---
 	
-	static void loadInitialGame() {
+	void loadInitialGame() {
 		// init services
 		var lcuService = new LcuService();
 		var liveClientDataService = new LiveClientDataService();
@@ -202,7 +202,7 @@ public class AppController {
 		getAppModel().setGame(game);
 	}
 
-	static void loadRunes() {
+	void loadRunes() {
 		var opggService = new OpggService();
 		var opggSessionBody = readText("opggSession.json");
 		var opggGame = opggService.getLiveGame(opggSessionBody);
@@ -210,7 +210,7 @@ public class AppController {
 		getAppModel().getGame().merge(opggGame);
 	}
 	
-	static void loadSwappedGame() {
+	void loadSwappedGame() {
 		var liveClientDataService = new LiveClientDataService();
 
 		var game = getAppModel().getGame();
@@ -218,7 +218,7 @@ public class AppController {
 		game.merge(liveClientDataService.getLiveGame(lcuLiveClientDataBody2));
 	}
 
-	static void loadWithLucidsGame() {
+	void loadWithLucidsGame() {
 		var liveClientDataService = new LiveClientDataService();
 
 		var game = getAppModel().getGame();

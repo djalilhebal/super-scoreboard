@@ -1,135 +1,148 @@
 package me.djalil.scoreboard.components;
 
+import static me.djalil.scoreboard.App.appHomePage;
+import static me.djalil.scoreboard.App.appName;
+
 import java.awt.AWTException;
 import java.awt.CheckboxMenuItem;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Menu;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URI;
 
 import javax.swing.JOptionPane;
 
 import me.djalil.scoreboard.model.AppModel;
-
-import static me.djalil.scoreboard.App.appHomePage;
-import static me.djalil.scoreboard.App.appName;
+import me.djalil.scoreboard.model.SpellUtils;
 
 /**
- * TODO/WIP.
+ * Add tray icon.
  * 
- * See [How to Use the System Tray (The Java™ Tutorials > Creating a GUI With Swing > Using Other Swing Features)](https://docs.oracle.com/javase/tutorial/uiswing/misc/systemtray.html)
+ * See [How to Use the System Tray (The Java™ Tutorials > Creating a GUI With
+ * Swing > Using Other Swing
+ * Features)](https://docs.oracle.com/javase/tutorial/uiswing/misc/systemtray.html)
  */
 public class KTray {
-    
-    private final static URI homeUri = URI.create(appHomePage);
 
-    public static void main(String[] args) throws InterruptedException {
-		var kTray = new KTray();
+	private final static URI homeUri = URI.create(appHomePage);
+
+	public static void main(String[] args) throws InterruptedException {
+		var kTray = new KTray(new AppModel());
 		kTray.installTray();
 		Thread.currentThread().join();
 	}
 
-    void handleQuit() {
-        System.exit(0);
-    }
-    
-    void handleAbout() {
-        //Desktop.isDesktopSupported()
-        //desktop.isSupported(Desktop.Action.BROWSE)
-        try {
-            var desktop = Desktop.getDesktop();
-            desktop.browse(homeUri);
-        } catch (Exception ex) {
-        	ex.printStackTrace();
-        }
-    }
-    
-    void installTray() {
-        if (!SystemTray.isSupported()) {
-            System.err.println("SystemTray is not supported");
-            return;
-        }
+	private AppModel appModel;
 
-        final PopupMenu popup = new PopupMenu();
-        final TrayIcon trayIcon = new TrayIcon(getIcon(), appName);
-        final SystemTray tray = SystemTray.getSystemTray();
-        
-        MenuItem aboutItem = new MenuItem("About");
-        onAction(aboutItem, this::handleAbout);
-        popup.add(aboutItem);
+	public KTray(AppModel appModel) {
+		this.appModel = appModel;
+	}
 
-        // Cosmic
-        CheckboxMenuItem assumeItem = new CheckboxMenuItem("May assume Cosmic");
-        assumeItem.setState(true);
-        assumeItem.setEnabled(false);
-        popup.add(assumeItem);
+	void handleQuit() {
+		System.exit(0);
+	}
 
-        // Delay
-        // TODO: Add action handler
-        //String str = JOptionPane.showInputDialog("Set recording delay to (integer)", AppModel.DEFAULT_RECORDING_DELAY);
-        //int newDelay = Integer.parseInt(str);
-        MenuItem delayItem = new MenuItem(String.format("Recording delay is %d s", AppModel.DEFAULT_RECORDING_DELAY));
-        delayItem.setEnabled(false);
-        popup.add(delayItem);
-        
-        // TODO: Separator?
+	void handleAbout() {
+		if (!Desktop.isDesktopSupported()) {
+			return;
+		}
 
-        MenuItem quitItem = new MenuItem("Quit");
-        onAction(quitItem, this::handleQuit);
-        popup.add(quitItem);
+		var desktop = Desktop.getDesktop();
+		if (!desktop.isSupported(Desktop.Action.BROWSE)) {
+			return;
+		}
 
-        trayIcon.setPopupMenu(popup);
-       
-        try {
-            tray.add(trayIcon);
-        } catch (AWTException e) {
-            System.err.println("TrayIcon could not be added.");
-        }
-    }
-   
-    /**
-     * Utility method.
-     * Adds `simpleAction` as an `ActionListener` to the `item`.
-     * 
-     * - Maybe replace `Runnable` with a more appropriate functional interface.
-     * `Callable` and `Consumer` aren't good either:
-	 * We don't want to force `simpleAction` to return anything or accept any argument.
-     */
-    static void onAction(MenuItem item, Runnable simpleAction) {
-    	item.addActionListener(new ActionListener() {
-    		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				simpleAction.run();
+		try {
+			desktop.browse(homeUri);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void installTray() {
+		if (!SystemTray.isSupported()) {
+			System.err.println("SystemTray is not supported");
+			return;
+		}
+
+		final TrayIcon trayIcon = new TrayIcon(getIcon(), appName);
+		final SystemTray tray = SystemTray.getSystemTray();
+
+		MenuItem aboutItem = new MenuItem("About");
+		aboutItem.addActionListener(_ev -> this.handleAbout());
+
+		// Cosmic
+		CheckboxMenuItem assumeItem = new CheckboxMenuItem("May assume Cosmic");
+		assumeItem.setState(SpellUtils.assumeCosmic);
+		// For now, let's make it read-only.
+		assumeItem.setEnabled(false);
+
+		// Timer template
+		MenuItem timerItem = new Menu("Timer template: Remaining");
+		// For now, let's make it read-only.
+		timerItem.setEnabled(false);
+
+		// Delay
+		MenuItem delayItem = new MenuItem(String.format("Recording delay is %ds", appModel.getRecordingDelay()));
+		delayItem.addActionListener(_ev -> {
+			try {
+				String str = JOptionPane.showInputDialog("Set recording delay to (positive integer)", appModel.getRecordingDelay());
+				int newDelay = Integer.parseUnsignedInt(str);
+				appModel.setRecordingDelay(newDelay);
+				// FIXME: Not DRY enough!
+				delayItem.setLabel(String.format("Recording delay is %ds", appModel.getRecordingDelay()));
+			} catch (NumberFormatException ex) {
+				//ex.printStackTrace();
+				// Do nothing.
 			}
-    		
-    	});
-    }
-    
-    /**
-     * Get (or create) the tray icon.
-     * 
-     * - TODO: Draw a simple hexagon or crossed-square hexagon (https://commons.wikimedia.org/wiki/File:Crossed-square_hexagon.png).
-     */
-    public static Image getIcon() {
-        var img = new BufferedImage(250, 250, BufferedImage.TYPE_INT_ARGB);
-        var g2 = img.createGraphics();
-        g2.setColor(KColor.PURPLE);
-        g2.fillRect(0, 0, 250, 250);
-        
-        g2.setColor(KColor.WHITE);
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 12f));
-        g2.drawString("SS", 0, 12);
+		});
 
-        g2.dispose();
-        return img;
-    }
+		MenuItem quitItem = new MenuItem("Quit");
+		quitItem.addActionListener(_ev -> this.handleQuit());
+
+		PopupMenu popup = new PopupMenu();
+		popup.add(aboutItem);
+		popup.addSeparator();
+		popup.add(assumeItem);
+		popup.add(timerItem);
+		popup.add(delayItem);
+		popup.addSeparator();
+		popup.add(quitItem);
+
+		trayIcon.setPopupMenu(popup);
+
+		try {
+			tray.add(trayIcon);
+		} catch (AWTException e) {
+			System.err.println("TrayIcon could not be added.");
+		}
+	}
+
+	/**
+	 * Get (or create) the tray icon.
+	 * 
+	 * - TODO: Draw a simple hexagon or crossed-square hexagon
+	 * (https://commons.wikimedia.org/wiki/File:Crossed-square_hexagon.png).
+	 */
+	public static Image getIcon() {
+		var img = new BufferedImage(250, 250, BufferedImage.TYPE_INT_ARGB);
+		var g2 = img.createGraphics();
+		g2.setColor(KColor.INDIGO);
+		g2.fillRect(0, 0, 250, 250);
+
+		g2.setColor(KColor.WHITE);
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 12f));
+		g2.drawString("SS", 0, 12);
+
+		g2.dispose();
+		return img;
+	}
 
 }

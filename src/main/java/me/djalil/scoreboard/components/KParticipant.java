@@ -11,6 +11,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import me.djalil.scoreboard.App;
 import me.djalil.scoreboard.AppController;
 import me.djalil.scoreboard.model.LightGame.Participant;
 
@@ -63,7 +64,7 @@ public class KParticipant extends JPanel {
 		this.setBackground(KColor.withAlpha(Color.WHITE, 10));
 
 		// TODO: Refactor
-		if (AppController.getAppModel().getGame().getBlueParticipants().contains(participant)) {
+		if (App.getAppModel().getGame().getBlueParticipants().contains(participant)) {
 			var padding = new EmptyBorder(0, 25, 0, 0);
 			var newBorder = new CompoundBorder(
 					getBorder(),

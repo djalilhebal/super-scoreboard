@@ -26,6 +26,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.StrokeBorder;
 
+import me.djalil.scoreboard.App;
 import me.djalil.scoreboard.AppController;
 import me.djalil.scoreboard.model.AppModel;
 import me.djalil.scoreboard.model.LightGame;
@@ -64,7 +65,7 @@ public class KSpell extends JButton {
 		var name = String.format("KSpell.%s.%s", participant.summonerName, spellIndex);
 		this.setName(name);
 
-		this.appModel = AppController.getAppModel();
+		this.appModel = App.getAppModel();
 
 		this.game = appModel.getGame();
 		this.participant = participant;
@@ -192,7 +193,24 @@ class KSpellTimer extends JComponent {
 
 	public KSpellTimer() {
 		//this.setLocation(0, 0);
+		this.setOpaque(false);
 	}
+	
+	// TODO: Should be changeable (public static?).
+	private String template = REMAINING_TEMPLATE;
+
+	/**
+	 *  When will it be up (ingame timestamp)?
+	 */
+	final static String TIMESTAMP_TEMPLATE = "~MM:SS";
+	/**
+	 *  Seconds remaining until it's up
+	 */
+	final static String REMAINING_TEMPLATE = "-SSS";
+	/**
+	 *  Calculated cooldown. For debugging.
+	 */
+	final static String COOLDOWN_TEMPLATE = "=SSS";
 
 	public void onElapsedTime(SpellTiming spellTiming) {
 		if (this.progressValue != spellTiming.getElapsedRatio()) {
@@ -257,21 +275,20 @@ class KSpellTimer extends JComponent {
 		g2.setColor(Color.WHITE);
 		g2.draw(progressArc);
 
-		// When will it be up (ingame timestamp)?
-		final String TIMESTAMP_TEMPLATE = "~MM:SS";
-		// Seconds remaining until it's up
-		final String REMAINING_TEMPLATE = "-SSS";
-		// Calculated cooldown. For debugging.
-		final String COOLDOWN_TEMPLATE = "=SSS";
-
-		// var template = TIMESTAMP_TEMPLATE;
-		// var text = "~" + spellTiming.getWhenUpIngame();
-
-		// var template = REMAINING_TEMPLATE;
-		// var text = "-" + spellTiming.getRemainingSeconds();
-
-		var template = COOLDOWN_TEMPLATE;
-		var text = "=" + (int)spellTiming.cooldown;
+		String text;
+		switch (template) {
+			case REMAINING_TEMPLATE:
+				text = "-" + spellTiming.getRemainingSeconds();
+				break;
+			case TIMESTAMP_TEMPLATE:
+				text = "~" + spellTiming.getWhenUpIngame();
+				break;
+			case COOLDOWN_TEMPLATE:
+				text = "=" + (int)spellTiming.cooldown;
+				break;
+			default:
+				throw new IllegalStateException();
+		}
 
 		// FIXME
 		//setStretchFont(template);

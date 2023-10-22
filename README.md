@@ -1,6 +1,6 @@
 # SuperScoreboard
 
-SuperScoreboard is an overlay for League of Legends to track cooldowns. (Proof of concept.)
+SuperScoreboard is a League of Legends overlay to track cooldowns. (Proof of concept.)
 
 Our overlay is **superimposed** onto the in-game **scoreboard**, hence the name.
 
@@ -8,7 +8,11 @@ What's "super" about it is how easy and intuitive it is to use: \
 It codifies(?) common practices, like double clicking an enemy summ to signal that it was used. \
 Also, it uses familiar UI patterns, like holding a button to reset or toggle its state (e.g. holding the Mute Player button to mute/unmute someone).
 
-![App screenshot](./docs/app-screenshot--2023-10-09.jpeg)
+> ![In-game screenshot](./docs/screenshot-ingame--2023-10-22.jpeg)
+> Notice Warwick's Ghost. It reads "-157", meaning there are 157 seconds left until it is up.
+
+> ![Tray icon](./docs/screenshot-tray--2023-10-22.jpeg)
+> Tray icon.
 
 
 ## Design
@@ -32,10 +36,6 @@ Also, it uses familiar UI patterns, like holding a button to reset or toggle its
 - ~~Double clicking the app's icon~~
     * It should copy Flash timers to the clipboard or type it in team chat.
 
-**Timer formats**:
-- "`~SSS`" or "`~MM:SS`" When the summ will be up (in-game time).
-- "`=SSS`" The summ's calculated cooldown at the moment of recording.
-- "`<SSS`" How many seconds are left.
 
 **Goals**:
 
@@ -48,7 +48,7 @@ Also, it uses familiar UI patterns, like holding a button to reset or toggle its
 - Takes delay into account
 (the player is not going to instantly record the usage of a summ, so we should that it was used a few seconds earlier, say 5 secs).
 - Reflects the ordering of participants on the ingame scoreboard.
-    + Preferably automatically reflects the ingame scoreboard order.
+    + Preferably, it automatically reflects the ingame scoreboard order.
     + ~~Otherwise, we can always let the user manually reorder SuperScoreboard's participants using a context menu (e.g. "Move to TOP").~~
 
 - Should be lighter than existing solutions.
@@ -92,6 +92,13 @@ External dependencies:
 
 - [ ] https://github.com/stirante/lol-client-java-api
     * It seems better than R4J.
+
+- [JNA](https://github.com/java-native-access/jna)
+    * [Java Native Access | Wikipedia](https://en.wikipedia.org/wiki/Java_Native_Access)
+    * A library to access native APIs using only Java.
+
+- JNativeHook https://github.com/kwhat/jnativehook
+    * To be removed.
 
 
 ## Expected Questions
